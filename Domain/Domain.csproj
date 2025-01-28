@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="IRepositories\IHotelRepository\" />
+    <Folder Include="IRepositories\ITicketRepository\" />
+    <Folder Include="IRepositories\ITourRepository\" />
+    <Folder Include="Models\Cart\" />
+    <Folder Include="Models\Hotel\" />
+    <Folder Include="Models\Locations\" />
+    <Folder Include="Models\User\" />
+  </ItemGroup>
+
+</Project>
