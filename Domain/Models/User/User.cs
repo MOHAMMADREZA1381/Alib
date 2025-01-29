@@ -6,13 +6,6 @@ namespace Domain.Models.User;
 public class User
 {
 
-    public User(int id,string email,string password,bool isActive)
-    {
-        Id=id;
-        Email=email;
-        Password=password;
-        IsActive=isActive;
-    }
     public User(string email, string password, bool isActive)
     {
         Email = email;

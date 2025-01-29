@@ -6,12 +6,7 @@ namespace Domain.Models.Hotel;
 
 public class Hotel
 {
-    public Hotel(int id,string name,int locationId)
-    {
-        Id=id;
-        Name=name;
-        LocationId = locationId;
-    }
+   
 
     public Hotel( string name, int locationid)
     {

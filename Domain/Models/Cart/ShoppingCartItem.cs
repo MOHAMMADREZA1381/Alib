@@ -10,9 +10,8 @@ public class ShoppingCartItem
         
         
     }
-    public ShoppingCartItem(int id,int hotelid,int shoppingCartId,int ticketid,int tourid)
+    public ShoppingCartItem(int hotelid,int shoppingCartId,int ticketid,int tourid)
     {
-        Id=id;
         HotelId=hotelid;
         ShoppingCartId=shoppingCartId;
         TicketId=ticketid;

@@ -4,13 +4,7 @@ namespace Domain.Models.Ticket.TypeOfTransportation;
 
 public class TourTransfer
 {
-    public TourTransfer(int id,int tourId,int ticketId,bool backTicket)
-    {
-        Id = id;
-        TourId = tourId;
-        TicketId = ticketId;
-        BackTicket = backTicket;
-    }
+ 
 
     public TourTransfer( int tourId, int ticketId, bool backTicket)
     {

@@ -9,14 +9,6 @@ public class Ticket
     {
         
     }
-    public Ticket(int id,TypeTransfer transfer, decimal price, string? detail)
-    {
-        Id = id;
-        Transfer = transfer;
-        Price = price;
-        Detaile = detail;
-        TicketLocations = new List<TicketLocation>(); 
-    }
 
     public Ticket( TypeTransfer transfer, decimal price, string? detail)
     {

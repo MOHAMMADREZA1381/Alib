@@ -7,13 +7,7 @@ namespace Domain.Models.Tour;
 public class Tour
 {
 
-    public Tour(int id,string des,int hotelId)
-    {
-        Id=id;
-        Des=des;
-        HotelId=hotelId;
-
-    }
+   
     public Tour( string des, int hotelId)
     {
         Des = des;

@@ -4,9 +4,9 @@ namespace Domain.Models.Cart;
 
 public class ShoppingCart
 {
-    public ShoppingCart(int id, int userId, bool payed)
+    public ShoppingCart( int userId, bool payed)
     {
-        Id = id;
+        
         UserId = userId;
         Payed = payed;
     }
