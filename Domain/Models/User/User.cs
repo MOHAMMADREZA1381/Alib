@@ -13,7 +13,6 @@ public class User
         IsActive = isActive;
     }
 
-
     [Key]
     public int Id { get;private set; }
     [EmailAddress(ErrorMessage = "Email is not valid")]

@@ -75,10 +75,14 @@ public class TicketService : ITicketService
     public async Task EditTicket(EditTicketDTO dto)
     {
         var Locations = await _locationRepository.GetTicketLocations(dto.id);
-        var ticket = new Ticket(dto.id, dto.Transfer, dto.Price, dto.Details);
+
+        var ticket = await _repository.GetTicket(dto.id);
+        ticket.Detaile=dto.Details;
+        ticket.Transfer=dto.Transfer;
+        ticket.Price=dto.Price;
+
         await _repository.EditTicket(ticket);
         await Save();
-
 
         foreach (var Location in Locations)
         {
@@ -86,13 +90,12 @@ public class TicketService : ITicketService
             {
                 if (Location.LocationId != dto.OriginId)
                 {
-                    var EditTicketLocation = new TicketLocation(Location.Id,dto.OriginId,ticket.Id,false);
-                    //Location.Dstination = false;
-                    //Location.TicketId = ticket.Id;
-                    //Location.LocationId = dto.OriginId;
-                    //Location.Id = Location.Id;
-                        
-                    await _locationRepository.EditTicketLocation(EditTicketLocation);
+                    Location.Dstination = false;
+                    Location.TicketId = ticket.Id;
+                    Location.LocationId = dto.OriginId;
+                    Location.Id = Location.Id;
+
+                    await _locationRepository.EditTicketLocation(Location);
                     await Save();
                 }
             }
@@ -100,14 +103,13 @@ public class TicketService : ITicketService
             {
                 if (Location.LocationId != dto.DstinationId)
                 {
-                    var EditTicketLocation = new TicketLocation(Location.Id, dto.DstinationId, ticket.Id, true);
 
-                    //Location.Dstination = true;
-                    //Location.TicketId = ticket.Id;
-                    //Location.locationId = dto.DstinationId;
-                    //Location.id = Location.id;
+                    Location.Dstination = true;
+                    Location.TicketId = ticket.Id;
+                    Location.LocationId = dto.DstinationId;
+                    Location.Id = Location.Id;
 
-                    await _locationRepository.EditTicketLocation(EditTicketLocation);
+                    await _locationRepository.EditTicketLocation(Location);
                     await Save();
                 }
             }

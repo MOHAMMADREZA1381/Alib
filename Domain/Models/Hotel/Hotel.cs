@@ -6,7 +6,10 @@ namespace Domain.Models.Hotel;
 
 public class Hotel
 {
-   
+    public Hotel()
+    {
+        
+    }
 
     public Hotel( string name, int locationid)
     {
@@ -16,7 +19,7 @@ public class Hotel
 
     public int Id { get;private set; }
     public string Name { get; set; }
-    public int  LocationId{ get; private set; }
+    public int  LocationId{ get;  set; }
 
     #region Rels
     [ForeignKey("LocationId")]
@@ -24,4 +27,13 @@ public class Hotel
 
     public ICollection<ShoppingCartItem> ShoppingCartItems{ get; set; }
     #endregion
+
+
+    public void UpdateHotel(Hotel hotel)
+    {
+        Name=hotel.Name;
+        LocationId=hotel.LocationId;
+    }
+
+
 }

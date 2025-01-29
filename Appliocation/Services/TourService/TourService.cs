@@ -45,7 +45,6 @@ public class TourService : ITourService
             Des = tour.Des,
             HotelName = tour.Hotel.Name,
 
-
         };
 
         foreach (var item in tour.TourTransfer)
@@ -65,7 +64,6 @@ public class TourService : ITourService
             }
         }
 
-
         return DTO;
     }
 
@@ -74,9 +72,12 @@ public class TourService : ITourService
 
 
         var TourTansfer = await _repository.GetTourTransferById(model.id);
-        var Tour = new Tour(model.id, model.Des, model.HotelId);
-    
-        await _repository.EditTour(Tour);
+
+        var EditTour = await _repository.GetTourById(model.id);
+        EditTour.Des = model.Des;
+        EditTour.HotelId= model.HotelId;
+
+        await _repository.EditTour(EditTour);
         await Save();
 
         foreach (var item in TourTansfer)
@@ -86,21 +87,23 @@ public class TourService : ITourService
             {
                 if (item.TicketId != model.SecondTicket)
                 {
-                    var EditTourTransfer = new TourTransfer(item.Id,model.id,model.SecondTicket,true);
+                    item.TicketId = model.SecondTicket;
+                    item.TourId=model.id;
+                    item.BackTicket = true;
 
-                    await _repository.EditTourTransfer(EditTourTransfer);
+                    await _repository.EditTourTransfer(item);
                     await Save();
-                 
                 }
             }
             else if (item.BackTicket == false)
             {
                 if (item.TicketId != model.FirstTicket)
                 {
+                    item.TicketId = model.FirstTicket;
+                    item.TourId = model.id;
+                    item.BackTicket = false;
 
-                    var EditTourTransfer = new TourTransfer(item.Id, model.id, model.FirstTicket, false);
-
-                    await _repository.EditTourTransfer(EditTourTransfer);
+                    await _repository.EditTourTransfer(item);
                     await Save();
 
                 }

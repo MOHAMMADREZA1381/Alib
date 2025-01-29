@@ -8,5 +8,6 @@ public interface ITicketRepository
     Task AddTicket(Ticket ticket);
     Task<Ticket> GetTicket(int id);
     Task EditTicket(Ticket ticket);
+    Task<List<TicketLocation>> GetTicketLocation(int id);
     Task Save();
 }

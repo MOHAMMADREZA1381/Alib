@@ -54,10 +54,11 @@ public class LocationService:IlocationService
 
     public async Task EditLocation(EditLocationDTO model)
     {
-        var Location = new Locations(model.id, model.Name, model.International);
+        var Location = await _locationService.GetLocationById(model.id);
+        Location.Name=model.Name;
+        Location.International = model.International;
         await _locationService.EditLocation(Location);
         await Save();
-
     }
 
     public async Task Save()

@@ -35,7 +35,12 @@ public class TicketRepository:ITicketRepository
         _context.Update(ticket);
     }
 
-   
+    public async Task<List<TicketLocation>> GetTicketLocation(int id)
+    {
+        return await _context.TicketLocations.Where(a => a.TicketId == id).ToListAsync();
+    }
+
+
     public async Task Save()
     {
        await _context.SaveChangesAsync();

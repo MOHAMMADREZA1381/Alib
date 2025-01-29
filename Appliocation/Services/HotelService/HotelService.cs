@@ -38,13 +38,10 @@ public class HotelService : IHotelService
     public async Task EditHotel(EditHotelDTO dto)
     {
         var hotel = await _hotelRepository.GetHotelById(dto.Id);
+        hotel.Name = dto.Name;
+        hotel.LocationId = (int)dto.locationId;
 
-        //hotel.Name = dto.Name;
-        //hotel.Id = dto.Id;
-        //hotel.LocationId = (int)dto.locationId;
-        var EditHotel = new Hotel(dto.Id, dto.Name, dto.locationId);
-
-        await _hotelRepository.EditHotel(EditHotel);
+        await _hotelRepository.EditHotel(hotel);
         await Save();
     }
 

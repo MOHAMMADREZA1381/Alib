@@ -20,13 +20,24 @@ public class Ticket
 
     public int Id { get; private set; }
 
-    public TypeTransfer Transfer { get; private set; }
+    public TypeTransfer Transfer { get; set; }
 
     public string? Detaile { get; set; }
 
-    public decimal Price { get; private set; }
+    public decimal Price { get; set; }
 
     public virtual ICollection<TicketLocation> TicketLocations { get; private set; }
+
+
+
+    public void EditTicket(Ticket ticket)
+    {
+        Detaile=ticket.Detaile;
+        Price=ticket.Price;
+        Transfer=ticket.Transfer;
+        TicketLocations=ticket.TicketLocations;
+    }
+
 
 
 }

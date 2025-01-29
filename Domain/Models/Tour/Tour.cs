@@ -6,7 +6,10 @@ namespace Domain.Models.Tour;
 
 public class Tour
 {
-
+    public Tour()
+    {
+        
+    }
    
     public Tour( string des, int hotelId)
     {
@@ -19,7 +22,7 @@ public class Tour
 
     public string Des{ get; set; }
 
-    public int HotelId{ get;private set; }
+    public int HotelId{ get; set; }
 
     
  
@@ -27,9 +30,19 @@ public class Tour
 
     [ForeignKey("HotelId")]
     public virtual Hotel.Hotel Hotel { get; set; }
-
-
     public virtual ICollection<TourTransfer> TourTransfer { get; set; }
     #endregion
+
+
+    public void EditTour(Tour tour)
+    {
+        if (tour == null)
+            throw new ArgumentNullException(nameof(tour));
+
+        Des=tour.Des;
+        HotelId=tour.HotelId;
+    }
+
+
 
 }

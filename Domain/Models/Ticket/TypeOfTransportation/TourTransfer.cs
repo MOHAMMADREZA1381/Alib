@@ -4,7 +4,10 @@ namespace Domain.Models.Ticket.TypeOfTransportation;
 
 public class TourTransfer
 {
- 
+    public TourTransfer()
+    {
+        
+    }
 
     public TourTransfer( int tourId, int ticketId, bool backTicket)
     {
@@ -15,9 +18,9 @@ public class TourTransfer
     }
 
     public int Id{ get;private set; }
-    public int TourId{ get;private set; }
-    public int TicketId{ get;private set; }
-    public bool BackTicket{ get;private set; }
+    public int TourId{ get; set; }
+    public int TicketId{ get; set; }
+    public bool BackTicket{ get; set; }
 
 
     [ForeignKey("TicketId")]
